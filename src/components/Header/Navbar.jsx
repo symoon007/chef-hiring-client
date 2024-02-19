@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { Link } from "react-router-dom";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -54,7 +55,6 @@ const Navbar = () => {
     <AppBar
       position="fixed"
       sx={{
-        
         transition: "all 0.3s ease-in-out",
         backdropFilter: isScrolled ? "blur(2px)" : "none",
         backgroundColor: isScrolled
@@ -119,11 +119,23 @@ const Navbar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
+              {/* {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
-              ))}
+              ))} */}
+              <MenuItem>
+                <Link to="/">Home</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to="/view-recipes">View Recipes</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to="/blog">Blog</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to="/login">Login</Link>
+              </MenuItem>
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -146,7 +158,7 @@ const Navbar = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {/* {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -154,7 +166,42 @@ const Navbar = () => {
               >
                 {page}
               </Button>
-            ))}
+            ))} */}
+            <Link to="/">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Home
+              </Button>
+            </Link>
+
+            <Link to="/view-recipes">
+              {" "}
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                View Recipes
+              </Button>
+            </Link>
+            <Link to="/blog">
+              {" "}
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Blog
+              </Button>
+            </Link>
+            <Link to="/login">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Login
+              </Button>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
