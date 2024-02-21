@@ -83,7 +83,7 @@ const Navbar = () => {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              fontFamily: "serif",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -122,11 +122,6 @@ const Navbar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {/* {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))} */}
               <MenuItem>
                 <Link to="/">Home</Link>
               </MenuItem>
@@ -151,7 +146,7 @@ const Navbar = () => {
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
+              fontFamily: "serif",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",

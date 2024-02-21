@@ -26,18 +26,24 @@ const Home = () => {
             viewport={{ once: false, amount: 0.7 }}
           >
             <Box sx={styles.heroLeft}>
-              <Typography variant="h7">Garlic&apos;s Special Chef</Typography>
+              <Typography variant="h7" sx={{ fontFamily: "cursive" }}>
+                Garlic&apos;s Special Chef
+              </Typography>
               <Typography
                 sx={{
                   marginTop: "10px",
                   fontWeight: 400,
                   marginBottom: "10px",
+                  fontFamily: "serif",
                 }}
                 variant="h2"
               >
                 Indulge in the Finest Culinary Delights
               </Typography>
-              <Typography variant="p" sx={{ fontFamily: "Helvetica" }}>
+              <Typography
+                variant="p"
+                sx={{ fontFamily: "sans-serif", lineHeight: "25px" }}
+              >
                 Lorem, ipsum dolor sit amet consectetur <br />
                 adipisicing elit. Nulla eligendi omnis magni <br />
                 hic atque autem eos laborum perspiciatis. Eaque,
@@ -46,14 +52,7 @@ const Home = () => {
           </motion.div>
         </Grid>
         <Grid item md={6} xs={12} sx={styles.heroRight}>
-          <motion.div
-            variants={fadeOut("left", 0.3)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: false, amount: 0.75 }}
-          >
-            <img width="100%" height="auto" src="/hero2.jpg" alt="Hero Image" />
-          </motion.div>
+          <img width="100%" height="auto" src="/hero2.jpg" alt="Hero Image" />
         </Grid>
       </Grid>
       {/* hero section closed */}
@@ -67,8 +66,10 @@ const Home = () => {
             viewport={{ once: false, amount: 0.75 }}
           >
             <Box>
-              <Typography variant="h7">Culinary Specialities</Typography>
-              <Typography variant="h4">
+              <Typography variant="h7" sx={{ fontFamily: "cursive" }}>
+                Culinary Specialities
+              </Typography>
+              <Typography variant="h4" sx={{ fontFamily: "serif" }}>
                 Stay Up to Date with The Latest Food <br /> Trends, Recipes, and
                 Cooking Techniques
               </Typography>
