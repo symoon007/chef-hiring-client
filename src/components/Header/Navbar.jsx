@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
+import { OutdoorGrill } from "@mui/icons-material";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -71,7 +72,9 @@ const Navbar = () => {
             transition: "all 0.3s ease-in-out",
           }}
         >
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <OutdoorGrill
+            sx={{ display: { xs: "none", md: "flex" }, mr: 1, fontSize: 30 }}
+          />
           <Typography
             variant="h6"
             noWrap
@@ -87,7 +90,7 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            GARLIC&apos;S
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -138,7 +141,7 @@ const Navbar = () => {
               </MenuItem>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <OutdoorGrill sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -155,7 +158,7 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            GARLIC&apos;S
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {/* {pages.map((page) => (
@@ -177,7 +180,6 @@ const Navbar = () => {
             </Link>
 
             <Link to="/view-recipes">
-              {" "}
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
