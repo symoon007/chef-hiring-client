@@ -1,13 +1,15 @@
-import { makeStyles } from "@mui/styles";
+import { Button } from "@mui/material";
+import { motion } from "framer-motion";
 
-export const useStyles = makeStyles((theme) => ({
-  appbar: {
-    transition: "all 0.3s ease-in-out",
-    backdropFilter: "blur(10px)",
-  },
-  toolbar: {
-    height: 80,
-    transition: "all 0.3s ease-in-out",
-  },
-  toolbarScrolled: { height: 50 },
-}));
+export const AnimatedButton = ({ value }) => {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.1 }} // Scale up the button on hover
+      whileTap={{ scale: 0.9 }} // Scale down the button on tap
+    >
+      <Button variant="contained" color="primary">
+        {value}
+      </Button>
+    </motion.div>
+  );
+};
