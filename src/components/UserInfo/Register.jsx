@@ -1,7 +1,9 @@
 import { Box, TextField, Button, Typography, IconButton } from "@mui/material";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -10,12 +12,13 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const { createUser } = useContext(AuthContext);
 
   const handlePhotoChange = (event) => {
     setPhoto(event.target.files[0]);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     setName("");
@@ -23,10 +26,22 @@ const Register = () => {
     setEmail("");
     setPassword("");
     setConfirmPassword("");
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log("New User:", createdUser);
+        toast.success("User created successfully!");
+      })
+      .catch((error) => {
+        console.error("user creatin failed", error);
+        toast.error("User creation failed!");
+      });
   };
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
       <Box
@@ -41,7 +56,7 @@ const Register = () => {
           maxWidth: 400,
           border: "1px solid gray",
           "&:hover": {
-            boxShadow: "0px 2px 10px rgba(25, 20, 40, 0.75)",
+            boxShadow: "0px 2px 5px rgba(25, 20, 40, 0.75)",
           },
         }}
       >
@@ -59,10 +74,9 @@ const Register = () => {
         </Box>
         <Box mt={3}>
           <TextField
-            // label="Photo"
-
             type="file"
             onChange={handlePhotoChange}
+            accept="image/*"
             fullWidth
           />
         </Box>

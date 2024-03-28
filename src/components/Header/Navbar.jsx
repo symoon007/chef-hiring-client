@@ -14,6 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 import { OutdoorGrill } from "@mui/icons-material";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -22,6 +23,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const { user, logout } = React.useContext(AuthContext);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -126,7 +128,7 @@ const Navbar = () => {
                 <Link to="/">Home</Link>
               </MenuItem>
               <MenuItem>
-                <Link to="/view-recipes">View Recipes</Link>
+                <Link to="/recipes">Recipes</Link>
               </MenuItem>
               <MenuItem>
                 <Link to="/blog">Blog</Link>
@@ -156,15 +158,7 @@ const Navbar = () => {
             GARLIC&apos;S
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {/* {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))} */}
+           
             <Link to="/">
               <Button
                 onClick={handleCloseNavMenu}
@@ -174,16 +168,15 @@ const Navbar = () => {
               </Button>
             </Link>
 
-            <Link to="/view-recipes">
+            <Link to="/recipes">
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                View Recipes
+                Recipes
               </Button>
             </Link>
             <Link to="/blog">
-              {" "}
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
@@ -204,7 +197,7 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src='' />
               </IconButton>
             </Tooltip>
             <Menu

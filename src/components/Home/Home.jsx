@@ -10,9 +10,9 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import TriangleButton from "../../Shared/TriangleButton";
+import TriangleButton from "../Shared/TriangleButton";
 import { motion } from "framer-motion";
-import { fadeIn, fadeOut } from "../../Shared/varitens";
+import { fadeIn, fadeOut } from "../Shared/varitens";
 
 const Home = () => {
   return (
@@ -77,14 +77,14 @@ const Home = () => {
           </motion.div>
 
           <Box>
-            <Link to="/view-recipes">
+            <Link to="/recipes">
               <motion.div
                 variants={fadeOut("left", 0.3)}
                 initial="hidden"
                 whileInView={"show"}
                 viewport={{ once: false, amount: 0.75 }}
               >
-                <TriangleButton value="View Recipes" />
+                <TriangleButton value="Recipes" />
               </motion.div>
             </Link>
           </Box>

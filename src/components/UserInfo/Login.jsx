@@ -1,18 +1,37 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Box, TextField, Button, Typography, IconButton } from "@mui/material";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
+  const from = location.state?.from?.pathnem || "/recipes";
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     setEmail("");
     setPassword("");
+    //user sign In
+    signIn(email, password)
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log("User logged in", loggedInUser);
+        toast.success("Logged In Successfully!");
+        navigate(from, { replace : true });
+      })
+      .catch((error) => {
+        console.error("Login Failed", error);
+        toast.error("Login failed! Invalid email or password.");
+      });
   };
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -31,7 +50,7 @@ const Login = () => {
           maxWidth: 400,
           border: "1px solid gray",
           "&:hover": {
-            boxShadow: "0px 2px 10px rgba(25, 20, 40, 0.75)",
+            boxShadow: "0px 2px 5px rgba(25, 20, 40, 0.75)",
           },
         }}
       >
